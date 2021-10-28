@@ -1,2 +1,106 @@
+$noteColor_1: rgba(96, 192, 220, 1)
+$noteColorShadow_1: rgba(96, 192, 220, 0.8)
+$noteColor_2: rgba(237, 93, 139, 1)
+$noteColorShadow_2: rgba(237, 93, 139, 0.4)
+$noteColor_3: rgba(152,139,249, 1)
+$noteColorShadow_3: rgba(152,139,249, 0.8)
+$noteColor_4: rgba(246, 183, 105, 1)
+$noteColorShadow_4: rgba(246, 183, 105, 0.8)
+$navBar: rgba(248, 233, 239, 1)
+$navBarShadow: rgba(0,0,0,0.4)
+
 body
-    color: red
+    color: black
+    font-family: Arial, Helvetica, sans-serif
+    & nav
+        position: fixed
+        top: 0
+        left: 0
+        width: 100%
+        display: flex
+
+        & .nav__bar
+            margin: 0 auto
+            height: 50px
+            width: 90%
+            background-color: $navBar
+            box-shadow: 0 0 9px 2px $navBarShadow
+            display: flex
+            border-bottom-left-radius: 15px
+            border-bottom-right-radius: 15px
+            align-items: center
+            justify-content: center
+        & div
+            margin: 0 10px
+            width: 100px
+            height: 32px
+            text-align: center
+            line-height: 32px
+            text-transform: uppercase
+            border-radius: 5px
+
+        & .work
+            background-color: $noteColor_1
+        & .home
+            background-color: $noteColor_2
+        & .hobby
+            background-color: $noteColor_3
+        & .study
+            background-color: $noteColor_4
+        & .nav__btn
+            position: relative
+            overflow: hidden
+            cursor: pointer
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)
+            &::before
+                position: absolute
+                bottom: 3px
+                left: -80%
+                transform: translate(-50%, 0)
+                content: ''
+                border-bottom: 2px solid black
+                width: 80px
+                height: 4px
+                transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)
+            &:hover
+                letter-spacing: 2px
+            &:hover::before
+                left: 50%
+
+    & main
+        margin-top: 110px
+        height: calc(100% - 100px)
+
+    & ul
+        margin: 0 auto
+        width: 80%
+        height: 900px
+        padding: 20px 20px
+        display: grid
+        grid-template-columns: 1fr 1fr 1fr
+        grid-template-rows: 1fr 1fr 1fr 1fr 1fr
+        grid-gap: 1em
+
+        & li
+            padding: 10px 5px 10px 15px
+            margin: 20px 0
+            width: 95%
+            height: 90%
+            list-style: none
+            border-radius: 15px
+            border: 1px solid rgba(0, 0, 0, 0.3)
+            transition: all 3s
+        & .note--color1
+            background-color: $noteColor_1
+            box-shadow: 0 0 10px 2px $noteColorShadow_1
+        & .note--color2
+            background-color: $noteColor_2
+            box-shadow: 0 0 8px 2px $noteColorShadow_2
+        & .note--color3
+            background-color: $noteColor_3
+            box-shadow: 0 0 8px 2px $noteColorShadow_3
+        & .note--color4
+            background-color: $noteColor_4
+            box-shadow: 0 0 8px 2px $noteColorShadow_4
+    & form
+        margin: 18px 0

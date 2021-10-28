@@ -1,5 +1,112 @@
 body {
-  color: red;
+  color: black;
+  font-family: Arial, Helvetica, sans-serif;
+}
+body nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+}
+body nav .nav__bar {
+  margin: 0 auto;
+  height: 50px;
+  width: 90%;
+  background-color: #f8e9ef;
+  box-shadow: 0 0 9px 2px rgba(0, 0, 0, 0.4);
+  display: flex;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  align-items: center;
+  justify-content: center;
+}
+body nav div {
+  margin: 0 10px;
+  width: 100px;
+  height: 32px;
+  text-align: center;
+  line-height: 32px;
+  text-transform: uppercase;
+  border-radius: 5px;
+}
+body nav .work {
+  background-color: #60c0dc;
+}
+body nav .home {
+  background-color: #ed5d8b;
+}
+body nav .hobby {
+  background-color: #988bf9;
+}
+body nav .study {
+  background-color: #f6b769;
+}
+body nav .nav__btn {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+body nav .nav__btn::before {
+  position: absolute;
+  bottom: 3px;
+  left: -80%;
+  transform: translate(-50%, 0);
+  content: "";
+  border-bottom: 2px solid black;
+  width: 80px;
+  height: 4px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+body nav .nav__btn:hover {
+  letter-spacing: 2px;
+}
+body nav .nav__btn:hover::before {
+  left: 50%;
+}
+body main {
+  margin-top: 110px;
+  height: calc(100% - 100px);
+}
+body ul {
+  margin: 0 auto;
+  width: 80%;
+  height: 900px;
+  padding: 20px 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+  grid-gap: 1em;
+}
+body ul li {
+  padding: 10px 5px 10px 15px;
+  margin: 20px 0;
+  width: 95%;
+  height: 90%;
+  list-style: none;
+  border-radius: 15px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  transition: all 3s;
+}
+body ul .note--color1 {
+  background-color: #60c0dc;
+  box-shadow: 0 0 10px 2px rgba(96, 192, 220, 0.8);
+}
+body ul .note--color2 {
+  background-color: #ed5d8b;
+  box-shadow: 0 0 8px 2px rgba(237, 93, 139, 0.4);
+}
+body ul .note--color3 {
+  background-color: #988bf9;
+  box-shadow: 0 0 8px 2px rgba(152, 139, 249, 0.8);
+}
+body ul .note--color4 {
+  background-color: #f6b769;
+  box-shadow: 0 0 8px 2px rgba(246, 183, 105, 0.8);
+}
+body form {
+  margin: 18px 0;
 }
 
 /*# sourceMappingURL=style.css.map */

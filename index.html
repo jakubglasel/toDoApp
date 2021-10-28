@@ -11,12 +11,34 @@
 <body>
     <nav class="nav">
         <div class="nav__bar">
-            <div class="bar__work">work</div>
-            <div class="bar__home">home</div>
-            <div class="bar__hobby">hobby</div>
-            <div class="bar__study">study</div>
+            <div class="nav__btn work">work</div>
+            <div class="nav__btn home">home</div>
+            <div class="nav__btn hobby">hobby</div>
+            <div class="nav__btn study">study</div>
         </div>
     </nav>
+    <main>
+        <div class="input__form">
+            <form class="" action="">
+                <label class="" for="notebooks">Select a category:</label>
+                <select class="category" name="category" id="category" required>
+                    <option value="default">Please pick category:</option>
+                    <option value="work">Work</option>
+                    <option value="home">Home</option>
+                    <option value="hobby">Hobby</option>
+                    <option value="study">Study</option>
+                </select>
+
+        </div>
+        <div class="add__note">
+            Please add new note:
+            <input id="note" type="text" placeholder="input some text ..." required>
+            <button class="form__btn">ADD</button>
+            </form>
+        </div>
+        </div>
+        <ul class="note__display"></ul>
+    </main>
 </body>
 
 </html>
