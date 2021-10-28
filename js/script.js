@@ -17,14 +17,3 @@ function storageCheckerUpdater (string = 'db')
 }
 
 storageCheckerUpdater();
-
-// function braketsRemover (data)
-// {
-//     const key = Object.keys(data)[0]
-//     const parsedFirstBr = data[key].replace('[', '')
-//     const parsedSecondBr = parsedFirstBr.replace(']', '')
-//     const cleanData = parsedSecondBr.split(',')
-//     return cleanData
-// }
-
-console.log(dataBase.home[1]);
