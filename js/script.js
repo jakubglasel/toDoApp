@@ -1,3 +1,9 @@
+const fromBtn = document.querySelector('.form__btn');
+const category = document.querySelector('.category');
+const note = document.getElementById('note');
+const navBtn = document.querySelectorAll('.nav__btn');
+let checkboxes = document.querySelectorAll('.checkbox');
+let bins = document.querySelectorAll('.fas');
 const { localStorage } = window;
 let dataBase;
 
@@ -24,26 +30,42 @@ function updateDom (category = 'work')
 {
   document.querySelector('ul').innerHTML = '';
   /* index set to rotate note colors version */
-  let index = 1;
+  let colorIndex = 1;
+  let index = 0;
 
   dataBase[`${ category }`].forEach((element) =>
   {
-    if (index > 4) {
-      index = 1;
+    if (colorIndex > 4) {
+      colorIndex = 1;
     }
     const li = document.createElement('li');
-    li.innerHTML = `${ element }`;
-    li.classList = `note--color${ index }`;
+    li.innerHTML = `${ element } <i class="fas fa-trash-alt"></i> <input class='checkbox' type="checkbox">`;
+    li.classList = `note--color${ colorIndex }`;
+    li.dataset.index = index;
     document.querySelector('ul').appendChild(li);
 
+    colorIndex += 1;
     index += 1;
   });
-}
+  checkboxes = document.querySelectorAll('.checkbox');
+  bins = document.querySelectorAll('.fas');
 
-const fromBtn = document.querySelector('.form__btn');
-const category = document.querySelector('.category');
-const note = document.getElementById('note');
-const navBtn = document.querySelectorAll('.nav__btn');
+  checkboxes.forEach((box) =>
+  {
+    box.addEventListener('click', () =>
+    {
+      console.log(box.parentElement.style.textDecoration = 'line-through');
+    });
+  });
+
+  bins.forEach((bin) =>
+  {
+    bin.addEventListener('click', () =>
+    {
+      bin.parentElement.remove();
+    });
+  });
+}
 
 /*
 eventlistener for adding new notes to correct arrays in DB
@@ -53,6 +75,7 @@ navBtn.forEach((element) =>
 {
   element.addEventListener('click', () =>
   {
+    element.classList.add('.slected');
     updateDom(element.innerHTML);
   });
 });
@@ -68,3 +91,4 @@ fromBtn.addEventListener('click', (e) =>
 });
 
 storageCheckerUpdater();
+updateDom();

@@ -8,6 +8,7 @@ body nav {
   left: 0;
   width: 100%;
   display: flex;
+  z-index: 1000;
 }
 body nav .nav__bar {
   margin: 0 auto;
@@ -48,6 +49,12 @@ body nav .nav__btn {
   cursor: pointer;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
+body nav .nav__btn .active {
+  letter-spacing: 2px;
+}
+body nav .nav__btn .selected {
+  letter-spacing: 2px;
+}
 body nav .nav__btn::before {
   position: absolute;
   bottom: 3px;
@@ -77,9 +84,10 @@ body ul {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
-  grid-gap: 1em;
+  grid-gap: 2em;
 }
 body ul li {
+  position: relative;
   padding: 10px 5px 10px 15px;
   margin: 20px 0;
   width: 95%;
@@ -87,7 +95,7 @@ body ul li {
   list-style: none;
   border-radius: 15px;
   border: 1px solid rgba(0, 0, 0, 0.3);
-  transition: all 3s;
+  transition: all 0.3s;
 }
 body ul .note--color1 {
   background-color: #60c0dc;
@@ -95,15 +103,28 @@ body ul .note--color1 {
 }
 body ul .note--color2 {
   background-color: #ed5d8b;
-  box-shadow: 0 0 8px 2px rgba(237, 93, 139, 0.4);
 }
 body ul .note--color3 {
   background-color: #988bf9;
-  box-shadow: 0 0 8px 2px rgba(152, 139, 249, 0.8);
 }
 body ul .note--color4 {
   background-color: #f6b769;
-  box-shadow: 0 0 8px 2px rgba(246, 183, 105, 0.8);
+}
+body ul .fas {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+body ul .fas:hover {
+  color: red;
+}
+body ul .checkbox {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  cursor: pointer;
 }
 body form {
   margin: 18px 0;

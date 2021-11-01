@@ -18,7 +18,7 @@ body
         left: 0
         width: 100%
         display: flex
-
+        z-index: 1000
         & .nav__bar
             margin: 0 auto
             height: 50px
@@ -52,6 +52,10 @@ body
             overflow: hidden
             cursor: pointer
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)
+            & .active
+                letter-spacing: 2px
+            & .selected
+                letter-spacing: 2px
             &::before
                 position: absolute
                 bottom: 3px
@@ -67,6 +71,9 @@ body
             &:hover::before
                 left: 50%
 
+                // &::before
+                //     left: 50%
+
     & main
         margin-top: 110px
         height: calc(100% - 100px)
@@ -79,9 +86,10 @@ body
         display: grid
         grid-template-columns: 1fr 1fr 1fr
         grid-template-rows: 1fr 1fr 1fr 1fr 1fr
-        grid-gap: 1em
+        grid-gap: 2em
 
         & li
+            position: relative
             padding: 10px 5px 10px 15px
             margin: 20px 0
             width: 95%
@@ -89,18 +97,34 @@ body
             list-style: none
             border-radius: 15px
             border: 1px solid rgba(0, 0, 0, 0.3)
-            transition: all 3s
+            transition: all 0.3s
+
         & .note--color1
             background-color: $noteColor_1
             box-shadow: 0 0 10px 2px $noteColorShadow_1
+
         & .note--color2
             background-color: $noteColor_2
-            box-shadow: 0 0 8px 2px $noteColorShadow_2
+
         & .note--color3
             background-color: $noteColor_3
-            box-shadow: 0 0 8px 2px $noteColorShadow_3
+
         & .note--color4
             background-color: $noteColor_4
-            box-shadow: 0 0 8px 2px $noteColorShadow_4
+
+        & .fas
+            position: absolute
+            bottom: 15px
+            right: 15px
+            cursor: pointer
+            transition: all 0.3s
+            &:hover
+                color: red
+        & .checkbox
+            position: absolute
+            top: 15px
+            right: 15px
+            cursor: pointer
+
     & form
         margin: 18px 0
