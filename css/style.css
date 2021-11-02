@@ -74,7 +74,18 @@ body nav .nav__btn:hover::before {
 }
 body main {
   margin-top: 110px;
-  height: calc(100% - 100px);
+}
+body main .notes__wrapper {
+  background-color: white;
+  margin: 0 auto;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.4);
+  max-width: 90%;
+}
+body main .notes__wrapper h3 {
+  padding-top: 10px;
+  padding-left: 20px;
+  font-size: 2rem;
 }
 body ul {
   margin: 0 auto;
@@ -83,7 +94,7 @@ body ul {
   padding: 20px 20px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
   grid-gap: 2em;
 }
 body ul li {
@@ -97,18 +108,36 @@ body ul li {
   border: 1px solid rgba(0, 0, 0, 0.3);
   transition: all 0.3s;
 }
+body ul .note__date {
+  padding: 10px 0px;
+  text-transform: uppercase;
+  font-size: 0.5em;
+}
+body ul .note__title {
+  padding-bottom: 10px;
+  text-transform: uppercase;
+  font-style: italic;
+  font-size: 1em;
+}
+body ul .note__text {
+  width: 95%;
+  font-size: 12px;
+}
 body ul .note--color1 {
   background-color: #60c0dc;
   box-shadow: 0 0 10px 2px rgba(96, 192, 220, 0.8);
 }
 body ul .note--color2 {
   background-color: #ed5d8b;
+  box-shadow: 0 0 10px 2px rgba(237, 93, 139, 0.4);
 }
 body ul .note--color3 {
   background-color: #988bf9;
+  box-shadow: 0 0 10px 2px rgba(152, 139, 249, 0.8);
 }
 body ul .note--color4 {
   background-color: #f6b769;
+  box-shadow: 0 0 10px 2px rgba(246, 183, 105, 0.8);
 }
 body ul .fas {
   position: absolute;
@@ -123,7 +152,7 @@ body ul .fas:hover {
 body ul .checkbox {
   position: absolute;
   top: 15px;
-  right: 15px;
+  right: 10px;
   cursor: pointer;
 }
 body form {
