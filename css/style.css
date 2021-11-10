@@ -1,21 +1,33 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
 body {
+  background: linear-gradient(to right, #eef2f3, #8e9eab);
   color: black;
   font-family: Arial, Helvetica, sans-serif;
+  height: 100%;
 }
 body nav {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
+  top: -5px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: 50%;
   display: flex;
   z-index: 1000;
 }
 body nav .nav__bar {
+  border: 1px solid black;
   margin: 0 auto;
   height: 50px;
   width: 90%;
-  background-color: #f8e9ef;
-  box-shadow: 0 0 9px 2px rgba(0, 0, 0, 0.4);
+  min-width: 430px;
+  background: #eeaeca;
+  background: radial-gradient(circle, #eeaeca 0%, #94bbe9 100%);
+  box-shadow: 0 0 6px 2px rgba(0, 0, 0, 0.4);
   display: flex;
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
@@ -47,6 +59,7 @@ body nav .nav__btn {
   position: relative;
   overflow: hidden;
   cursor: pointer;
+  min-width: 65px;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 body nav .nav__btn .active {
@@ -76,87 +89,105 @@ body main {
   margin-top: 110px;
 }
 body main .notes__wrapper {
+  height: 100%;
+  width: 95%;
+  min-width: 570px;
   background-color: white;
   margin: 0 auto;
+  padding: 10px 10px;
   border-radius: 10px;
   box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.4);
-  max-width: 90%;
 }
-body main .notes__wrapper h3 {
-  padding-top: 10px;
-  padding-left: 20px;
-  font-size: 2rem;
+body main .notes__wrapper .note__display {
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
 }
-body ul {
-  margin: 0 auto;
-  width: 80%;
-  height: 900px;
-  padding: 20px 20px;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
-  grid-gap: 2em;
-}
-body ul li {
-  position: relative;
-  padding: 10px 5px 10px 15px;
-  margin: 20px 0;
-  width: 95%;
-  height: 90%;
+body main .notes__wrapper .note__display .note {
+  margin: 5px 8px;
+  padding: 5px 10px;
+  max-width: 300px;
+  min-width: 150px;
+  max-height: 600px;
+  min-height: 200px;
   list-style: none;
   border-radius: 15px;
   border: 1px solid rgba(0, 0, 0, 0.3);
   transition: all 0.3s;
+  transform-style: preserve-3d;
+  position: relative;
+  opacity: 0;
+  transform: rotateY(0deg);
 }
-body ul .note__date {
+body main .notes__wrapper .note__display .active {
+  transform-style: preserve-3d;
+  opacity: 1;
+  transform: rotateY(360deg);
+  transition: all 0.3s;
+}
+body main .notes__wrapper .note__display .activated {
+  opacity: 1;
+}
+body main .notes__wrapper .note__display .note__date {
   padding: 10px 0px;
   text-transform: uppercase;
   font-size: 0.5em;
 }
-body ul .note__title {
+body main .notes__wrapper .note__display .note__title {
   padding-bottom: 10px;
   text-transform: uppercase;
   font-style: italic;
   font-size: 1em;
 }
-body ul .note__text {
+body main .notes__wrapper .note__display .note__text {
   width: 95%;
   font-size: 12px;
+  margin: 5px 35px 30px 10px;
 }
-body ul .note--color1 {
+body main .notes__wrapper .note__display .note--color1 {
   background-color: #60c0dc;
   box-shadow: 0 0 10px 2px rgba(96, 192, 220, 0.8);
 }
-body ul .note--color2 {
+body main .notes__wrapper .note__display .note--color2 {
   background-color: #ed5d8b;
   box-shadow: 0 0 10px 2px rgba(237, 93, 139, 0.4);
 }
-body ul .note--color3 {
+body main .notes__wrapper .note__display .note--color3 {
   background-color: #988bf9;
   box-shadow: 0 0 10px 2px rgba(152, 139, 249, 0.8);
 }
-body ul .note--color4 {
+body main .notes__wrapper .note__display .note--color4 {
   background-color: #f6b769;
   box-shadow: 0 0 10px 2px rgba(246, 183, 105, 0.8);
 }
-body ul .fas {
+body main .notes__wrapper .note__display .fas {
   position: absolute;
   bottom: 15px;
   right: 15px;
   cursor: pointer;
   transition: all 0.3s;
 }
-body ul .fas:hover {
+body main .notes__wrapper .note__display .fas:hover {
   color: red;
 }
-body ul .checkbox {
+body main .notes__wrapper .note__display .checkbox {
   position: absolute;
   top: 15px;
   right: 10px;
   cursor: pointer;
 }
+body .input__form {
+  margin: 0 auto;
+  width: 50%;
+}
 body form {
   margin: 18px 0;
+  display: flex;
+  flex-direction: column;
 }
 
 /*# sourceMappingURL=style.css.map */

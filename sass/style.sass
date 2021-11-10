@@ -9,22 +9,34 @@ $noteColorShadow_4: rgba(246, 183, 105, 0.8)
 $navBar: rgba(248, 233, 239, 1)
 $navBarShadow: rgba(0,0,0,0.4)
 
+*
+    padding: 0
+    margin: 0
+    box-sizing: border-box
+
 body
+    background: linear-gradient(to right, #eef2f3, #8e9eab)
     color: black
     font-family: Arial, Helvetica, sans-serif
+    height: 100%
     & nav
         position: fixed
-        top: 0
-        left: 0
-        width: 100%
+        top: -5px
+        left: 50%
+        transform: translate(-50%,0)
+        width: 50%
         display: flex
         z-index: 1000
+
         & .nav__bar
+            border: 1px solid black
             margin: 0 auto
             height: 50px
             width: 90%
-            background-color: $navBar
-            box-shadow: 0 0 9px 2px $navBarShadow
+            min-width: 430px
+            background: rgb(238,174,202)
+            background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%)
+            box-shadow: 0 0 6px 2px $navBarShadow
             display: flex
             border-bottom-left-radius: 15px
             border-bottom-right-radius: 15px
@@ -51,6 +63,7 @@ body
             position: relative
             overflow: hidden
             cursor: pointer
+            min-width: 65px
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)
             & .active
                 letter-spacing: 2px
@@ -71,84 +84,98 @@ body
             &:hover::before
                 left: 50%
 
-                // &::before
-                //     left: 50%
-
     & main
         margin-top: 110px
-        // height: calc(100% - 100px)
 
         & .notes__wrapper
+            height: 100%
+            width: 95%
+            min-width: 570px
             background-color: white
             margin: 0 auto
+            padding: 10px 10px
             border-radius: 10px
             box-shadow: 0 0 10px 1px $navBarShadow
-            max-width: 90%
 
-            & h3
-                padding-top: 10px
-                padding-left: 20px
-                font-size: 2rem
+            & .note__display
+                padding: 0
+                width: 100%
+                height: 100%
+                display: flex
+                flex-direction: row
+                flex-wrap: wrap
+                justify-content: center
 
-    & ul
+                & .note
+                    margin: 5px 8px
+                    padding: 5px 10px
+                    max-width: 300px
+                    min-width: 150px
+                    max-height: 600px
+                    min-height: 200px
+                    list-style: none
+                    border-radius: 15px
+                    border: 1px solid rgba(0, 0, 0, 0.3)
+                    transition: all 0.3s
+                    transform-style: preserve-3d
+                    position: relative
+                    opacity: 0
+                    transform: rotateY(0deg)
+
+                & .active
+                    transform-style: preserve-3d
+                    opacity: 1
+                    transform: rotateY(360deg)
+                    transition: all 0.3s
+
+                & .activated
+                    opacity: 1
+
+                & .note__date
+                    padding: 10px 0px
+                    text-transform: uppercase
+                    font-size: 0.5em
+                & .note__title
+                    padding-bottom: 10px
+                    text-transform: uppercase
+                    font-style: italic
+                    font-size: 1em
+
+                & .note__text
+                    width: 95%
+                    font-size: 12px
+                    margin: 5px 35px 30px 10px
+
+                & .note--color1
+                    background-color: $noteColor_1
+                    box-shadow: 0 0 10px 2px $noteColorShadow_1
+                & .note--color2
+                    background-color: $noteColor_2
+                    box-shadow: 0 0 10px 2px $noteColorShadow_2
+                & .note--color3
+                    background-color: $noteColor_3
+                    box-shadow: 0 0 10px 2px $noteColorShadow_3
+                & .note--color4
+                    background-color: $noteColor_4
+                    box-shadow: 0 0 10px 2px $noteColorShadow_4
+                & .fas
+                    position: absolute
+                    bottom: 15px
+                    right: 15px
+                    cursor: pointer
+                    transition: all 0.3s
+                    &:hover
+                        color: red
+                & .checkbox
+                    position: absolute
+                    top: 15px
+                    right: 10px
+                    cursor: pointer
+    & .input__form
         margin: 0 auto
-        width: 80%
-        height: 900px
-        padding: 20px 20px
-        display: grid
-        grid-template-columns: 1fr 1fr 1fr
-        grid-template-rows: 1fr 1fr 1fr
-        grid-gap: 2em
-
-        & li
-            position: relative
-            padding: 10px 5px 10px 15px
-            margin: 20px 0
-            width: 95%
-            height: 90%
-            list-style: none
-            border-radius: 15px
-            border: 1px solid rgba(0, 0, 0, 0.3)
-            transition: all 0.3s
-        & .note__date
-            padding: 10px 0px
-            text-transform: uppercase
-            font-size: 0.5em
-        & .note__title
-            padding-bottom: 10px
-            text-transform: uppercase
-            font-style: italic
-            font-size: 1em
-
-        & .note__text
-            width: 95%
-            font-size: 12px
-
-        & .note--color1
-            background-color: $noteColor_1
-            box-shadow: 0 0 10px 2px $noteColorShadow_1
-        & .note--color2
-            background-color: $noteColor_2
-            box-shadow: 0 0 10px 2px $noteColorShadow_2
-        & .note--color3
-            background-color: $noteColor_3
-            box-shadow: 0 0 10px 2px $noteColorShadow_3
-        & .note--color4
-            background-color: $noteColor_4
-            box-shadow: 0 0 10px 2px $noteColorShadow_4
-        & .fas
-            position: absolute
-            bottom: 15px
-            right: 15px
-            cursor: pointer
-            transition: all 0.3s
-            &:hover
-                color: red
-        & .checkbox
-            position: absolute
-            top: 15px
-            right: 10px
-            cursor: pointer
+        width: 50%
 
     & form
         margin: 18px 0
+        display: flex
+        flex-direction: column
