@@ -81,6 +81,8 @@ eventlisteners for bins and checkboxes
   {
     bin.addEventListener('click', () =>
     {
+      const trash = new Audio('../media/NoteTrash.wav');
+      trash.play();
       const binArr = dataBase[bin.parentElement.dataset.category];
       const binIndex = bin.parentElement.dataset.index;
       binArr.splice(binIndex, 1);
