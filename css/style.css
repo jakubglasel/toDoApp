@@ -5,14 +5,14 @@
 }
 
 body {
-  background: linear-gradient(to right, #eef2f3, #8e9eab);
+  background: white;
   color: black;
   font-family: Arial, Helvetica, sans-serif;
   height: 100%;
 }
 body nav {
   position: fixed;
-  top: -5px;
+  top: 10px;
   left: 50%;
   transform: translate(-50%, 0);
   width: 50%;
@@ -20,21 +20,17 @@ body nav {
   z-index: 1000;
 }
 body nav .nav__bar {
-  border: 1px solid black;
   margin: 0 auto;
   height: 50px;
-  width: 90%;
+  width: 85%;
   min-width: 430px;
-  background: #eeaeca;
-  background: radial-gradient(circle, #eeaeca 0%, #94bbe9 100%);
-  box-shadow: 0 0 6px 2px rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.8);
   display: flex;
-  border-bottom-left-radius: 15px;
-  border-bottom-right-radius: 15px;
+  border-radius: 40px;
   align-items: center;
   justify-content: center;
 }
-body nav div {
+body nav .nav__btn {
   margin: 0 10px;
   width: 100px;
   height: 32px;
@@ -42,31 +38,12 @@ body nav div {
   line-height: 32px;
   text-transform: uppercase;
   border-radius: 5px;
-}
-body nav .work {
-  background-color: #60c0dc;
-}
-body nav .home {
-  background-color: #ed5d8b;
-}
-body nav .hobby {
-  background-color: #988bf9;
-}
-body nav .study {
-  background-color: #f6b769;
-}
-body nav .nav__btn {
   position: relative;
   overflow: hidden;
   cursor: pointer;
   min-width: 65px;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-body nav .nav__btn .active {
-  letter-spacing: 2px;
-}
-body nav .nav__btn .selected {
-  letter-spacing: 2px;
+  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  color: white;
 }
 body nav .nav__btn::before {
   position: absolute;
@@ -74,16 +51,30 @@ body nav .nav__btn::before {
   left: -80%;
   transform: translate(-50%, 0);
   content: "";
-  border-bottom: 2px solid black;
+  border-bottom: 2px solid white;
   width: 80px;
   height: 4px;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+body nav .nav__btn::before .active {
+  border-bottom: 2px solid black;
 }
 body nav .nav__btn:hover {
   letter-spacing: 2px;
 }
 body nav .nav__btn:hover::before {
   left: 50%;
+}
+body nav .active {
+  letter-spacing: 2px;
+  font-size: 24px;
+  background-color: white;
+  color: black;
+  border-radius: 25px;
+  border: solid black 1px;
+  width: 155px;
+  height: 45px;
+  line-height: 45px;
 }
 body main {
   margin-top: 110px;
@@ -148,22 +139,6 @@ body main .notes__wrapper .note__display .note__text {
   font-size: 12px;
   margin: 5px 35px 30px 10px;
 }
-body main .notes__wrapper .note__display .note--color1 {
-  background-color: #60c0dc;
-  box-shadow: 0 0 10px 2px rgba(96, 192, 220, 0.8);
-}
-body main .notes__wrapper .note__display .note--color2 {
-  background-color: #ed5d8b;
-  box-shadow: 0 0 10px 2px rgba(237, 93, 139, 0.4);
-}
-body main .notes__wrapper .note__display .note--color3 {
-  background-color: #988bf9;
-  box-shadow: 0 0 10px 2px rgba(152, 139, 249, 0.8);
-}
-body main .notes__wrapper .note__display .note--color4 {
-  background-color: #f6b769;
-  box-shadow: 0 0 10px 2px rgba(246, 183, 105, 0.8);
-}
 body main .notes__wrapper .note__display .fas {
   position: absolute;
   bottom: 15px;
@@ -188,6 +163,23 @@ body form {
   margin: 18px 0;
   display: flex;
   flex-direction: column;
+}
+body form #category {
+  width: 70px;
+}
+body form .color__picker {
+  position: relative;
+  background-color: white;
+  display: flex;
+  width: 200px;
+  height: 40px;
+  flex-wrap: wrap;
+}
+body form input {
+  opacity: 1;
+}
+body form input input:checked .checkmark {
+  background-color: #fff;
 }
 
 /*# sourceMappingURL=style.css.map */

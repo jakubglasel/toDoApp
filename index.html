@@ -23,14 +23,17 @@
     <main>
         <div class="input__form">
             <form class="" action="">
-                <label class="" for="notebooks">Select a category:</label>
+                <label class="" for="notebooks">pick category:</label>
                 <select class="category" name="category" id="category" required>
-                    <option value="default">Please pick category:</option>
                     <option value="work">Work</option>
                     <option value="home">Home</option>
                     <option value="hobby">Hobby</option>
                     <option value="study">Study</option>
                 </select>
+                <div class="color__picker">
+                    <label for="color">Select note color:</label>
+                    <input type="color" id="color" name="color" value="#ffffff">
+                </div>
                 <div class="add__note">
                     Please add new note:
                     <input id="title" type="text" placeholder="title" required>
@@ -45,6 +48,7 @@
             </div>
         </div>
     </main>
+
 </body>
 
 </html>
