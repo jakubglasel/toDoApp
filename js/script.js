@@ -1,19 +1,32 @@
-// audio
-
 const fromBtn = document.querySelector('.form__btn');
+const form = document.querySelector('.input__form');
+const main = document.querySelector('main');
 const category = document.querySelector('.category');
 const note = document.getElementById('note');
 const color = document.getElementById('color');
 const title = document.getElementById('title');
 const navBtn = document.querySelectorAll('.nav__btn');
+const slideBtn = document.querySelector('.nav__slideBtn');
 let checkboxes = document.querySelectorAll('.checkbox');
 let bins = document.querySelectorAll('.fas');
 let notes = document.querySelectorAll('.note');
 const { localStorage } = window;
+let dataBase;
+let navPick = 'work';
+
 // triger to animate notes only after changing sections
 let triggered = false;
-let dataBase;
 
+slideBtn.addEventListener('click', () => {
+  main.classList.toggle('slideDown');
+  form.classList.toggle('slideDown');
+});
+
+/*
+Function checks if local DB exists.
+If is not created already, creates default empyt one.
+If DB exists, updates it.
+*/
 function storageCheckerUpdater(string = 'db') {
   if (localStorage.getItem('db')) {
     if (dataBase === undefined) {
@@ -23,17 +36,13 @@ function storageCheckerUpdater(string = 'db') {
   } else {
     localStorage.setItem(
       string,
-      '{"work" : [],"home" : [] ,"hobby" : [],"study" : [],"active" : "work"}',
+      '{"work" : [],"home" : [] ,"hobby" : [],"study" : []}',
     );
     dataBase = JSON.parse(localStorage.getItem(string));
   }
 }
 
-/*
-Function checks if local DB exists.
-If is not created already, creates default empyt one.
-If DB exists, updates it.
-*/
+/* updates DOM */
 function updateDom(arg) {
   document.querySelector('.note__display').innerHTML = '';
   // status and text to check if checkbox in note is ticked ( line strike decided on that too)
@@ -109,7 +118,7 @@ eventlisteners for bins and checkboxes
         setTimeout(() => {
           const page = new Audio('../media/NotePage.wav');
           page.play();
-          noteItem.classList.add('active');
+          noteItem.classList.add('activateIt');
         }, noteItem.dataset.index * 200);
       });
     } else {
@@ -117,8 +126,6 @@ eventlisteners for bins and checkboxes
         noteItem.classList.add('activated');
       });
     }
-
-    // trigers delayed animation of notes
   }
 
   rollNotes();
@@ -131,19 +138,25 @@ function navClear() {
     e.classList.remove('active');
   });
 }
-
 /*
   eventlistener for adding new notes to correct arrays in DB
   */
+
 navBtn.forEach((element) => {
   element.addEventListener('click', () => {
     navClear();
-    triggered = false;
+    /* stops rolling animation if category is same as clicked one */
+    if (element.innerHTML === navPick) {
+      triggered = true;
+    } else {
+      triggered = false;
+      navPick = element.innerHTML;
+    }
+
     // sets category to picked element
     category.value = element.innerHTML;
-    element.classList.toggle('active');
+    element.classList.add('active');
     updateDom(element.innerHTML);
-    dataBase.active = element.innerHTML;
     storageCheckerUpdater();
   });
 });
@@ -182,4 +195,4 @@ fromBtn.addEventListener('click', (e) => {
 });
 
 storageCheckerUpdater();
-updateDom(dataBase.active);
+updateDom('work');

@@ -10,6 +10,12 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   height: 100%;
 }
+body .nav__slideBtn {
+  position: fixed;
+  font-size: 34px;
+  top: 20px;
+  right: 20px;
+}
 body nav {
   position: fixed;
   top: 10px;
@@ -24,6 +30,7 @@ body nav .nav__bar {
   height: 50px;
   width: 85%;
   min-width: 430px;
+  max-width: 580px;
   background: rgba(0, 0, 0, 0.8);
   display: flex;
   border-radius: 40px;
@@ -45,7 +52,12 @@ body nav .nav__btn {
   transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   color: white;
 }
-body nav .nav__btn::before {
+body nav .nav__addBtn {
+  width: 50px;
+  color: black;
+  font-size: 1.5rem;
+}
+body nav .nav__addBtn::before {
   position: absolute;
   bottom: 3px;
   left: -80%;
@@ -56,13 +68,10 @@ body nav .nav__btn::before {
   height: 4px;
   transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
-body nav .nav__btn::before .active {
-  border-bottom: 2px solid black;
-}
-body nav .nav__btn:hover {
+body nav .nav__addBtn:hover {
   letter-spacing: 2px;
 }
-body nav .nav__btn:hover::before {
+body nav .nav__addBtn:hover::before {
   left: 50%;
 }
 body nav .active {
@@ -78,6 +87,10 @@ body nav .active {
 }
 body main {
   margin-top: 110px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+body main.slideDown {
+  margin-top: 310px;
 }
 body main .notes__wrapper {
   height: 100%;
@@ -114,7 +127,15 @@ body main .notes__wrapper .note__display .note {
   opacity: 0;
   transform: rotateY(0deg);
 }
-body main .notes__wrapper .note__display .active {
+body main .notes__wrapper .note__display .note:nth-of-type(even) {
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+body main .notes__wrapper .note__display .note:nth-of-type(odd) {
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(0, 0, 0, 0.4);
+}
+body main .notes__wrapper .note__display .activateIt {
   transform-style: preserve-3d;
   opacity: 1;
   transform: rotateY(360deg);
@@ -139,14 +160,14 @@ body main .notes__wrapper .note__display .note__text {
   font-size: 12px;
   margin: 5px 35px 30px 10px;
 }
-body main .notes__wrapper .note__display .fas {
+body main .notes__wrapper .note__display .fa-trash-alt {
   position: absolute;
   bottom: 15px;
   right: 15px;
   cursor: pointer;
   transition: all 0.3s;
 }
-body main .notes__wrapper .note__display .fas:hover {
+body main .notes__wrapper .note__display .fa-trash-alt:hover {
   color: red;
 }
 body main .notes__wrapper .note__display .checkbox {
@@ -158,11 +179,29 @@ body main .notes__wrapper .note__display .checkbox {
 body .input__form {
   margin: 0 auto;
   width: 50%;
+  top: -150px;
+  left: 50%;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transform: translate(-50%, -50%);
+  position: fixed;
+  opacity: 0;
+}
+body .input__form.slideDown {
+  top: 160px;
+  opacity: 1;
 }
 body form {
-  margin: 18px 0;
+  background-color: white;
+  border: 1px solid;
+  padding: 10px 10px;
+  border-radius: 15px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  margin: 0 auto;
+  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   display: flex;
   flex-direction: column;
+  width: 600px;
 }
 body form #category {
   width: 70px;
@@ -174,12 +213,6 @@ body form .color__picker {
   width: 200px;
   height: 40px;
   flex-wrap: wrap;
-}
-body form input {
-  opacity: 1;
-}
-body form input input:checked .checkmark {
-  background-color: #fff;
 }
 
 /*# sourceMappingURL=style.css.map */
