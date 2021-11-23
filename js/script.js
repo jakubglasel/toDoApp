@@ -8,7 +8,7 @@ const title = document.getElementById('title');
 const navBtn = document.querySelectorAll('.nav__btn');
 const slideBtn = document.querySelector('.nav__slideBtn');
 let checkboxes = document.querySelectorAll('.checkbox');
-let bins = document.querySelectorAll('.fas');
+let bins = document.querySelectorAll('.trash');
 let notes = document.querySelectorAll('.note');
 const { localStorage } = window;
 let dataBase;
@@ -16,10 +16,24 @@ let navPick = 'work';
 
 // triger to animate notes only after changing sections
 let triggered = false;
+// status for slide circle status
+let slideBool = false;
 
 slideBtn.addEventListener('click', () => {
   main.classList.toggle('slideDown');
   form.classList.toggle('slideDown');
+  if (slideBool) {
+    slideBool = !slideBool;
+    slideBtn.innerHTML = `<p>show form: </p><svg aria-hidden="true" focusable="false" class="svg-circle active" role="img"
+    viewBox="0 0 512 512">
+    <path fill="currentColor"
+        d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm144 276c0 6.6-5.4 12-12 12h-92v92c0 6.6-5.4 12-12 12h-56c-6.6 0-12-5.4-12-12v-92h-92c-6.6 0-12-5.4-12-12v-56c0-6.6 5.4-12 12-12h92v-92c0-6.6 5.4-12 12-12h56c6.6 0 12 5.4 12 12v92h92c6.6 0 12 5.4 12 12v56z">
+    </path>
+</svg>`;
+  } else {
+    slideBtn.innerHTML = '<p>hide form: </p><svg aria-hidden="true" focusable="false" class="svg-circle" role="img" viewBox="0 0 512 512"><path fill="currentColor" d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zM124 296c-6.6 0-12-5.4-12-12v-56c0-6.6 5.4-12 12-12h264c6.6 0 12 5.4 12 12v56c0 6.6-5.4 12-12 12H124z"></path></svg>';
+    slideBool = !slideBool;
+  }
 });
 
 /*
@@ -65,7 +79,8 @@ function updateDom(arg) {
       <div class="note__date">${element.date}</div>
       <div class="note__title">${element.title}</div>
       <div class="note__text"> ${element.note}</div>
-      <i class="fas fa-trash-alt"></i> <input class='checkbox' type="checkbox" id="check" ${status}>`;
+      <div class="trash"><svg aria-hidden="true" focusable="false" class="trash-svg" role="img" viewBox="0 0 448 512"><path fill="currentColor" d="M32 464a48 48 0 0 0 48 48h288a48 48 0 0 0 48-48V128H32zm272-256a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zm-96 0a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zm-96 0a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zM432 32H312l-9.4-18.7A24 24 0 0 0 281.1 0H166.8a23.72 23.72 0 0 0-21.4 13.3L136 32H16A16 16 0 0 0 0 48v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16z"></path></svg></div>
+      <input class='checkbox' type="checkbox" id="check" ${status}>`;
     div.classList = 'note';
     div.style.backgroundColor = element.color;
     div.style.textDecoration = text;
@@ -73,7 +88,7 @@ function updateDom(arg) {
     div.dataset.category = arg;
     document.querySelector('.note__display').appendChild(div);
     checkboxes = document.querySelectorAll('.checkbox');
-    bins = document.querySelectorAll('.fas');
+    bins = document.querySelectorAll('.trash');
     notes = document.querySelectorAll('.note');
   });
 

@@ -10,13 +10,38 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   height: 100%;
 }
+body ::selection {
+  color: black;
+  background: yellow;
+}
 body .nav__slideBtn {
   position: fixed;
-  font-size: 34px;
-  top: 20px;
-  right: 20px;
+  display: flex;
+  flex-direction: column;
+  font-size: 12px;
+  line-height: 12px;
+  top: 10px;
+  right: 50px;
+  width: 150px;
+  height: 50px;
+  align-items: center;
+}
+body .nav__slideBtn p {
+  margin: 5px;
+  text-transform: uppercase;
+}
+body .nav__slideBtn .svg-circle {
+  transition: 0.4s all;
+  width: 40px;
+  height: 40px;
+  transform: rotate(0deg);
+}
+body .nav__slideBtn .svg-circle.active {
+  transition: 0.4s all;
+  transform: rotate(360deg);
 }
 body nav {
+  user-select: none;
   position: fixed;
   top: 10px;
   left: 50%;
@@ -38,6 +63,7 @@ body nav .nav__bar {
   justify-content: center;
 }
 body nav .nav__btn {
+  position: relative;
   margin: 0 10px;
   width: 100px;
   height: 32px;
@@ -45,19 +71,13 @@ body nav .nav__btn {
   line-height: 32px;
   text-transform: uppercase;
   border-radius: 5px;
-  position: relative;
   overflow: hidden;
   cursor: pointer;
   min-width: 65px;
   transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   color: white;
 }
-body nav .nav__addBtn {
-  width: 50px;
-  color: black;
-  font-size: 1.5rem;
-}
-body nav .nav__addBtn::before {
+body nav .nav__btn::before {
   position: absolute;
   bottom: 3px;
   left: -80%;
@@ -68,11 +88,16 @@ body nav .nav__addBtn::before {
   height: 4px;
   transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
-body nav .nav__addBtn:hover {
+body nav .nav__btn::before:hover {
   letter-spacing: 2px;
 }
-body nav .nav__addBtn:hover::before {
+body nav .nav__btn::before:hover::before {
   left: 50%;
+}
+body nav .nav__addBtn {
+  width: 50px;
+  color: black;
+  font-size: 1.5rem;
 }
 body nav .active {
   letter-spacing: 2px;
@@ -90,7 +115,8 @@ body main {
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 body main.slideDown {
-  margin-top: 310px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  margin-top: 460px;
 }
 body main .notes__wrapper {
   height: 100%;
@@ -127,14 +153,6 @@ body main .notes__wrapper .note__display .note {
   opacity: 0;
   transform: rotateY(0deg);
 }
-body main .notes__wrapper .note__display .note:nth-of-type(even) {
-  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.2);
-  border: 1px solid rgba(0, 0, 0, 0.2);
-}
-body main .notes__wrapper .note__display .note:nth-of-type(odd) {
-  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.2);
-  border: 1px solid rgba(0, 0, 0, 0.4);
-}
 body main .notes__wrapper .note__display .activateIt {
   transform-style: preserve-3d;
   opacity: 1;
@@ -160,14 +178,19 @@ body main .notes__wrapper .note__display .note__text {
   font-size: 12px;
   margin: 5px 35px 30px 10px;
 }
-body main .notes__wrapper .note__display .fa-trash-alt {
+body main .notes__wrapper .note__display .trash {
   position: absolute;
   bottom: 15px;
   right: 15px;
   cursor: pointer;
   transition: all 0.3s;
+  width: 20px;
+  height: 20px;
 }
-body main .notes__wrapper .note__display .fa-trash-alt:hover {
+body main .notes__wrapper .note__display .trash-svg {
+  color: black;
+}
+body main .notes__wrapper .note__display .trash-svg:hover {
   color: red;
 }
 body main .notes__wrapper .note__display .checkbox {
@@ -179,16 +202,20 @@ body main .notes__wrapper .note__display .checkbox {
 body .input__form {
   margin: 0 auto;
   width: 50%;
-  top: -150px;
-  left: 50%;
+  top: 260px;
+  left: -50%;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   transform: translate(-50%, -50%);
   position: fixed;
   opacity: 0;
 }
 body .input__form.slideDown {
-  top: 160px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  left: 50%;
   opacity: 1;
+}
+body .input__form-form {
+  padding: 15px;
 }
 body form {
   background-color: white;
@@ -202,17 +229,104 @@ body form {
   display: flex;
   flex-direction: column;
   width: 600px;
+  height: 310px;
 }
-body form #category {
-  width: 70px;
-}
-body form .color__picker {
-  position: relative;
+body form .form__btn {
+  cursor: pointer;
   background-color: white;
+  border: none;
+  width: 25px;
+  height: 25px;
+  position: fixed;
+  right: 45px;
+}
+body form .form__btn svg {
+  height: 25px;
+  width: 25px;
+}
+body form .category__color_wrap {
   display: flex;
-  width: 200px;
-  height: 40px;
   flex-wrap: wrap;
+  width: 100%;
+  font-size: 20px;
+  text-transform: uppercase;
+  align-items: center;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+body form .category__label {
+  margin-right: -60px;
+}
+body form .color__picker_picker {
+  line-height: 20px;
+  padding: 1px;
+  width: 25px;
+  border: 1px solid black;
+}
+body form h6 {
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+body form .add__note_input {
+  display: flex;
+  flex-direction: column;
+}
+body form .add__note_input .add__note_title {
+  margin: 5px 0;
+  width: 40%;
+  height: 30px;
+}
+body form .add__note_input .add__note_text {
+  resize: none;
+  width: 100%;
+  height: 150px;
+  margin-bottom: 5px;
+}
+body .modal {
+  opacity: 1;
+  display: block;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: #474e5d;
+  padding-top: 50px;
+}
+body .modal .modal__content {
+  text-align: center;
+  width: 350px;
+  height: 150px;
+}
+body .modal .modal__content .modal__counter {
+  display: flex;
+  justify-content: space-around;
+}
+body .modal .modal__content .modal__counter_count {
+  font-size: 24px;
+}
+body .modal .modal__content h1 {
+  margin: 10px 0;
+}
+body .modal .modal__content p {
+  margin: 15px 0;
+}
+body .modal .modal__content .cancelBtn {
+  background-color: green;
+  border: none;
+  width: 90px;
+  height: 30px;
+  border-radius: 10px;
+}
+body .modal .modal__content .deleteBtn {
+  border-radius: 10px;
+  background-color: red;
+  border: none;
+  width: 90px;
+  height: 30px;
 }
 
 /*# sourceMappingURL=style.css.map */
