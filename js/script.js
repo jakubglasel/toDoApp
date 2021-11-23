@@ -104,7 +104,7 @@ eventlisteners for bins and checkboxes
     bin.addEventListener('click', () => {
       // display modal and sets coundown to 10s
       modal.style.display = 'block';
-      let counterNum = 10;
+      let counterNum = 5;
 
       const cat = bin.parentElement.dataset.category;
       const binArr = dataBase[cat];
@@ -135,6 +135,7 @@ eventlisteners for bins and checkboxes
       canBtn.addEventListener('click', () => {
         modal.style.display = 'none';
         clearInterval(countDown);
+        counter.innerHTML = '5s';
       });
     });
   });
