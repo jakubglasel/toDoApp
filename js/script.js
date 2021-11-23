@@ -1,3 +1,7 @@
+const modal = document.getElementById('modal');
+const counter = document.querySelector('.modal__counter_count');
+const delBtn = document.querySelector('.deleteBtn');
+const canBtn = document.querySelector('.cancelBtn');
 const fromBtn = document.querySelector('.form__btn');
 const form = document.querySelector('.input__form');
 const main = document.querySelector('main');
@@ -98,13 +102,40 @@ eventlisteners for bins and checkboxes
 
   bins.forEach((bin) => {
     bin.addEventListener('click', () => {
-      const trash = new Audio('../media/NoteTrash.wav');
-      trash.play();
-      const binArr = dataBase[bin.parentElement.dataset.category];
+      // display modal and sets coundown to 10s
+      modal.style.display = 'block';
+      let counterNum = 10;
+
+      const cat = bin.parentElement.dataset.category;
+      const binArr = dataBase[cat];
       const binIndex = bin.parentElement.dataset.index;
-      binArr.splice(binIndex, 1);
-      storageCheckerUpdater();
-      updateDom(bin.parentElement.dataset.category);
+
+      const countDown = setInterval(() => {
+        counterNum -= 1;
+        if (counterNum < 1) {
+          modal.style.display = 'none';
+          clearInterval(countDown);
+        }
+
+        counter.innerHTML = `${counterNum}s`;
+      }, 1000);
+
+      // delete button
+      delBtn.addEventListener('click', () => {
+        modal.style.display = 'none';
+        clearInterval(countDown);
+        // const trash = new Audio('../media/NoteTrash.wav');
+        // trash.play();
+        binArr.splice(binIndex, 1);
+        storageCheckerUpdater();
+        updateDom(cat);
+      });
+
+      // cancel button
+      canBtn.addEventListener('click', () => {
+        modal.style.display = 'none';
+        clearInterval(countDown);
+      });
     });
   });
 
@@ -119,20 +150,21 @@ eventlisteners for bins and checkboxes
         boxArr[boxIndex].status = 1;
       }
 
-      const pop = new Audio('../media/NotePop.mp3');
-      pop.play();
+      // const pop = new Audio('../media/NotePop.mp3');
+      // pop.play();
       storageCheckerUpdater();
       updateDom(box.parentElement.dataset.category);
     });
   });
 
   function rollNotes() {
+    notes = document.querySelectorAll('.note');
     if (triggered === false) {
       triggered = !triggered;
       notes.forEach((noteItem) => {
         setTimeout(() => {
-          const page = new Audio('../media/NotePage.wav');
-          page.play();
+          // const page = new Audio('../media/NotePage.wav');
+          // page.play();
           noteItem.classList.add('activateIt');
         }, noteItem.dataset.index * 200);
       });
@@ -204,7 +236,8 @@ fromBtn.addEventListener('click', (e) => {
 
   title.value = '';
   note.value = '';
-
+  // const page = new Audio('../media/NotePage.wav');
+  // page.play();
   storageCheckerUpdater();
   updateDom(category.value);
 });

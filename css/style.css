@@ -80,18 +80,18 @@ body nav .nav__btn {
 body nav .nav__btn::before {
   position: absolute;
   bottom: 3px;
-  left: -80%;
-  transform: translate(-50%, 0);
+  left: -180%;
   content: "";
   border-bottom: 2px solid white;
   width: 80px;
   height: 4px;
   transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
-body nav .nav__btn::before:hover {
+body nav .nav__btn:hover {
   letter-spacing: 2px;
 }
-body nav .nav__btn::before:hover::before {
+body nav .nav__btn:hover:hover::before {
+  transform: translate(-50%, 0);
   left: 50%;
 }
 body nav .nav__addBtn {
@@ -120,10 +120,11 @@ body main.slideDown {
 }
 body main .notes__wrapper {
   height: 100%;
+  margin: 0 auto;
   width: 95%;
   min-width: 570px;
+  max-width: 900px;
   background-color: white;
-  margin: 0 auto;
   padding: 10px 10px;
   border-radius: 10px;
   box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.4);
@@ -136,6 +137,9 @@ body main .notes__wrapper .note__display {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
+}
+body main .notes__wrapper .note__display .welcome {
+  text-align: center;
 }
 body main .notes__wrapper .note__display .note {
   margin: 5px 8px;
@@ -184,11 +188,13 @@ body main .notes__wrapper .note__display .trash {
   right: 15px;
   cursor: pointer;
   transition: all 0.3s;
-  width: 20px;
-  height: 20px;
+  width: 15px;
+  height: 15px;
 }
 body main .notes__wrapper .note__display .trash-svg {
   color: black;
+  width: 15px;
+  height: 15px;
 }
 body main .notes__wrapper .note__display .trash-svg:hover {
   color: red;
@@ -227,6 +233,7 @@ body form {
   margin: 0 auto;
   transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   display: flex;
+  position: relative;
   flex-direction: column;
   width: 600px;
   height: 310px;
@@ -237,10 +244,11 @@ body form .form__btn {
   border: none;
   width: 25px;
   height: 25px;
-  position: fixed;
-  right: 45px;
+  position: absolute;
+  right: 20px;
 }
 body form .form__btn svg {
+  position: relative;
   height: 25px;
   width: 25px;
 }
@@ -285,7 +293,7 @@ body form .add__note_input .add__note_text {
 }
 body .modal {
   opacity: 1;
-  display: block;
+  display: none;
   position: fixed;
   z-index: 1000;
   left: 0;
@@ -315,6 +323,7 @@ body .modal .modal__content p {
   margin: 15px 0;
 }
 body .modal .modal__content .cancelBtn {
+  cursor: pointer;
   background-color: green;
   border: none;
   width: 90px;
@@ -322,6 +331,7 @@ body .modal .modal__content .cancelBtn {
   border-radius: 10px;
 }
 body .modal .modal__content .deleteBtn {
+  cursor: pointer;
   border-radius: 10px;
   background-color: red;
   border: none;
