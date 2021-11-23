@@ -96,6 +96,24 @@ function updateDom(arg) {
     notes = document.querySelectorAll('.note');
   });
 
+  function rollNotes() {
+    notes = document.querySelectorAll('.note');
+    if (triggered === false) {
+      triggered = !triggered;
+      notes.forEach((noteItem) => {
+        setTimeout(() => {
+          // const page = new Audio('../media/NotePage.wav');
+          // page.play();
+          noteItem.classList.add('activateIt');
+        }, noteItem.dataset.index * 200);
+      });
+    } else {
+      notes.forEach((noteItem) => {
+        noteItem.classList.add('activated');
+      });
+    }
+  }
+
   /*
 eventlisteners for bins and checkboxes
 */
@@ -124,8 +142,8 @@ eventlisteners for bins and checkboxes
       delBtn.addEventListener('click', () => {
         modal.style.display = 'none';
         clearInterval(countDown);
-        // const trash = new Audio('../media/NoteTrash.wav');
-        // trash.play();
+        const trash = new Audio('../media/NoteTrash.wav');
+        trash.play();
         binArr.splice(binIndex, 1);
         storageCheckerUpdater();
         updateDom(cat);
@@ -151,30 +169,12 @@ eventlisteners for bins and checkboxes
         boxArr[boxIndex].status = 1;
       }
 
-      // const pop = new Audio('../media/NotePop.mp3');
-      // pop.play();
+      const pop = new Audio('../media/NotePop.mp3');
+      pop.play();
       storageCheckerUpdater();
       updateDom(box.parentElement.dataset.category);
     });
   });
-
-  function rollNotes() {
-    notes = document.querySelectorAll('.note');
-    if (triggered === false) {
-      triggered = !triggered;
-      notes.forEach((noteItem) => {
-        setTimeout(() => {
-          // const page = new Audio('../media/NotePage.wav');
-          // page.play();
-          noteItem.classList.add('activateIt');
-        }, noteItem.dataset.index * 200);
-      });
-    } else {
-      notes.forEach((noteItem) => {
-        noteItem.classList.add('activated');
-      });
-    }
-  }
 
   rollNotes();
 }
@@ -237,8 +237,8 @@ fromBtn.addEventListener('click', (e) => {
 
   title.value = '';
   note.value = '';
-  // const page = new Audio('../media/NotePage.wav');
-  // page.play();
+  const page = new Audio('../media/NotePage.wav');
+  page.play();
   storageCheckerUpdater();
   updateDom(category.value);
 });
